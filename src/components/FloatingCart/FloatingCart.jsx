@@ -15,4 +15,4 @@ export default function FloatingCart({ onOpen }) {
       <div className="fc-price">${total.toFixed(2)}</div>
     </div>
   );
-} 
+}

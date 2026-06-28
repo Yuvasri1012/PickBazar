@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { categories, mockProducts } from "../Data/Data";
+import { useState, useEffect } from "react";
+import { categories } from "../Data/Data";
 import { FiChevronDown } from "react-icons/fi";
 import { Basket } from "@phosphor-icons/react";
 import { useCart } from "../../context/CartContext";
@@ -7,35 +7,43 @@ import "./ProductGrid.css";
 
 export default function ProductGrid() {
   const [activeCategory, setActiveCategory] = useState("all");
+  const [products, setProducts] = useState([]);
   const { items, dispatch } = useCart();
 
-  // items array → { id: qty } object — existing JSX same வேலை செய்யும்
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const res = await fetch("https://6a414a251ff1d27becc16d86.mockapi.io/products");
+      const data = await res.json();
+      setProducts(data);
+    };
+    fetchProducts();
+  }, []);
+
   const cart = items.reduce((acc, item) => {
-    acc[item.id] = item.qty;
+    acc[String(item.id)] = item.qty;
     return acc;
   }, {});
 
   const filtered =
     activeCategory === "all"
-      ? mockProducts
-      : mockProducts.filter((p) => p.category === activeCategory);
+      ? products
+      : products.filter((p) => p.category === activeCategory);
 
   const addToCart = (product) => {
     dispatch({ type: "ADD_ITEM", payload: product });
   };
 
   const removeFromCart = (id) => {
-    const currentQty = cart[id] || 0;
+    const currentQty = cart[String(id)] || 0;
     if (currentQty <= 1) {
-      dispatch({ type: "REMOVE_ITEM", payload: id });
+      dispatch({ type: "REMOVE_ITEM", payload: String(id) });
     } else {
-      dispatch({ type: "DECREMENT", payload: id });
+      dispatch({ type: "DECREMENT", payload: String(id) });
     }
   };
 
   return (
     <div className="pg-layout">
-      {/* Sidebar */}
       <aside className="pg-sidebar">
         {categories.slice(1).map((cat) => (
           <button
@@ -52,7 +60,6 @@ export default function ProductGrid() {
         ))}
       </aside>
 
-      {/* Main */}
       <main className="pg-main">
         <div className="pg-topbar">
           <h2 className="pg-section-title">
@@ -66,25 +73,34 @@ export default function ProductGrid() {
               {product.discount > 0 && (
                 <span className="pg-discount-badge">{product.discount}%</span>
               )}
+
               <div className="pg-img-wrap">
                 <img src={product.image} alt={product.name} className="pg-img" />
               </div>
+
               <div className="pg-card-body">
                 <p className="pg-product-name">{product.name}</p>
                 <p className="pg-product-weight">{product.weight}</p>
+
                 <div className="pg-price-row">
                   <div className="pg-prices">
-                   {product.discount > 0 ? (
-  <>
-    <span className="pg-original">${product.price.toFixed(2)}</span>
-    <span className="pg-sale">${product.discountPrice.toFixed(2)}</span>
-  </>
-) : (
-  <span className="pg-sale">${product.price.toFixed(2)}</span>
-)}
+                    {product.discount > 0 ? (
+                      <>
+                        <span className="pg-original">
+                          ${Number(product.price).toFixed(2)}
+                        </span>
+                        <span className="pg-sale">
+                          ${Number(product.discountPrice).toFixed(2)}
+                        </span>
+                      </>
+                    ) : (
+                      <span className="pg-sale">
+                        ${Number(product.price).toFixed(2)}
+                      </span>
+                    )}
                   </div>
-
-                  {cart[product.id] ? (
+                  
+                  {cart[String(product.id)] ? (
                     <div className="pg-qty-ctrl">
                       <button
                         className="pg-qty-btn"
@@ -92,7 +108,7 @@ export default function ProductGrid() {
                       >
                         −
                       </button>
-                      <span className="pg-qty-num">{cart[product.id]}</span>
+                      <span className="pg-qty-num">{cart[String(product.id)]}</span>
                       <button
                         className="pg-qty-btn"
                         onClick={() => addToCart(product)}

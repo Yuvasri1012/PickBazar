@@ -1,0 +1,274 @@
+.pg-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f5f7;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.pg-sidebar {
+  width: 215px;
+  min-width: 215px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e8e8e8;
+  padding: 6px 0;
+  position: sticky;
+  top: 64px;
+  height: calc(100vh - 64px);
+  overflow-y: auto;
+  align-self: flex-start;
+}
+
+.pg-cat-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 11px 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-size: 14px;
+  color: #333;
+  border-radius: 0;
+  transition: background 0.15s;
+}
+
+.pg-cat-btn:hover {
+  background: #f0faf4;
+  color: #1a7a40;
+}
+
+.pg-cat-btn.active {
+  background: #e8f8ef;
+  color: #1a7a40;
+  font-weight: 600;
+}
+
+.pg-cat-icon {
+  font-size: 18px;
+  width: 22px;
+  text-align: center;
+}
+
+.pg-cat-name {
+  flex: 1;
+  line-height: 1.3;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.pg-cat-arrow {
+  color: #aaa;
+  font-size: 18px;
+  font-weight: 300;
+}
+
+.pg-main {
+  flex: 1;
+  padding: 24px 28px;
+}
+
+.pg-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.pg-section-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.pg-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 18px;
+}
+
+.pg-card {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+  overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.pg-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+.pg-discount-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: #f59e0b;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 20px;
+  padding: 3px 9px;
+  z-index: 2;
+  letter-spacing: 0.3px;
+}
+
+.pg-img-wrap {
+  background: #f8faf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 210px;
+  padding: 12px;
+}
+
+.pg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.pg-card-body {
+  padding: 14px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.pg-product-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0;
+  line-height: 1.35;
+}
+
+.pg-product-weight {
+  font-size: 12px;
+  color: #888;
+  margin: 0;
+}
+
+.pg-price-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 8px;
+  gap: 8px;
+}
+
+.pg-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.pg-original {
+  font-size: 12px;
+  color: #aaa;
+  text-decoration: line-through;
+}
+
+.pg-sale {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1a7a40;
+}
+
+.pg-add-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: #fff;
+  border: 1.5px solid #00a381;
+  color: #00a381;
+  border-radius: 8px;
+  padding: 7px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.pg-add-btn:hover {
+  background: #00a381;
+  color: #fff;
+}
+
+
+.pg-qty-ctrl {
+  display: flex;
+  align-items: center;
+  background: #00a381;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.pg-qty-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 700;
+  width: 32px;
+  height: 34px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s;
+}
+
+.pg-qty-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.pg-qty-num {
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  min-width: 24px;
+  text-align: center;
+}
+
+@media (max-width: 991px) {
+  .pg-sidebar {
+    width: 180px;
+    min-width: 180px;
+  }
+
+  .pg-grid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 14px;
+  }
+}
+
+@media (max-width: 576px) {
+  .pg-layout {
+    flex-direction: column;
+  }
+
+  .pg-sidebar {
+    display: none;
+  }
+
+  .pg-main {
+    margin-left: 0;
+    padding: 16px;
+  }
+
+  .pg-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
+}

@@ -1,0 +1,87 @@
+/* ───── PickBazar Global Styles ───── */
+
+:root {
+  /* Brand Colors */
+  --primary: #00b894;
+  --primary-dark: #00a381;
+  --primary-light: #f0fdf4;
+  --dark: #1a1a2e;
+  --dark-2: #2d2d44;
+
+  /* Text */
+  --text: #374151;
+  --text-light: #6b7280;
+  --text-heading: #111827;
+
+  /* UI */
+  --bg: #f9fafb;
+  --white: #ffffff;
+  --border: #e5e7eb;
+  --border-light: #f3f4f6;
+  --shadow-sm: 0 1px 4px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.13);
+
+  /* Badge */
+  --badge-sale: #ef4444;
+  --badge-new: #3b82f6;
+
+  /* Font */
+  --font: "Inter", "Segoe UI", system-ui, sans-serif;
+
+  font-family: var(--font);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--text);
+  background: var(--bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+button {
+  font-family: var(--font);
+  cursor: pointer;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--border-light);
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}

@@ -6,7 +6,7 @@ import Banner from "./components/Banner/Banner";
 import ProductGrid from "./components/ProductGrid/ProductGrid";
 import FloatingCart from "./components/FloatingCart/FloatingCart";
 import CartDrawer from "./components/CartDrawer/CartDrawer";
-import CheckoutPage from "./components/CheckoutPage/CheckoutPage";
+import CheckoutPage from "./components/Checkoutpage/CheckoutPage";
 import { CartProvider } from "./context/CartContext";
 
 function App() {

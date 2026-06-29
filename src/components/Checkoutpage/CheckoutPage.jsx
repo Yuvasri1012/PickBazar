@@ -7,6 +7,15 @@ import "./CheckoutPage.css";
 const DELIVERY_CHARGE = 49;
 const FREE_DELIVERY_THRESHOLD = 549;
 
+const handlePlaceOrder = () => {
+  if (!form.fullName || !form.phone || !form.address || !form.city || !form.pincode) {
+    alert("Please fill all required fields.");
+    return;
+  }
+  alert(`Order Placed Successfully!\nThank you, ${form.fullName}! Your order worth $${grandTotal} is confirmed.`);
+  setOrderPlaced(true);
+};
+
 export default function CheckoutPage() {
   const navigate = useNavigate();
   const { items, total, dispatch } = useCart();
